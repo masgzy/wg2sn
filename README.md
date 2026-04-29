@@ -6,6 +6,9 @@
 
 ## 快速开始
 
+使用标准Python3环境即可，建议使用较新的Python3版本
+仅Python 3.13经过验证
+
 ```bash
 # 编码
 py main.py e wg.conf
