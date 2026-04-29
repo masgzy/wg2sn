@@ -8,18 +8,18 @@
 
 ```bash
 # 编码
-py 1.py e wg.conf
-py 1.py e wg.conf -o uri.txt
-py 1.py e a.conf b.conf c.conf
+py main.py e wg.conf
+py main.py e wg.conf -o uri.txt
+py main.py e a.conf b.conf c.conf
 
 # 解码
-py 1.py d "sn://wg?eNpj..."
-py 1.py d nodes.txt
-py 1.py d "sn://..." -o wg.conf
+py main.py d "sn://wg?eNpj..."
+py main.py d nodes.txt
+py main.py d "sn://..." -o wg.conf
 
 # 日志
-py 1.py e wg.conf -v
-py 1.py d uri.txt -o out.conf -v
+py main.py e wg.conf -v
+py main.py d uri.txt -o out.conf -v
 ```
 
 ---

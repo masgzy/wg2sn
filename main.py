@@ -3,14 +3,14 @@
 sn://wg WireGuard URI 编解码工具
 
 用法:
-  py 1.py                          显示帮助
-  py 1.py -h / --help
-  py 1.py e wg.conf                编码 wg.conf → URI
-  py 1.py e a.conf b.conf          批量编码
-  py 1.py e wg.conf -o uri.txt     编码并保存
-  py 1.py d "sn://wg?eNpj..."      解码 URI 字符串
-  py 1.py d uri.txt                读取文件, 批量解码其中的 sn:// URI
-  py 1.py d "sn://..." -o wg.conf  解码并保存为 conf
+  py main.py                          显示帮助
+  py main.py -h / --help
+  py main.py e wg.conf                编码 wg.conf → URI
+  py main.py e a.conf b.conf          批量编码
+  py main.py e wg.conf -o uri.txt     编码并保存
+  py main.py d "sn://wg?eNpj..."      解码 URI 字符串
+  py main.py d uri.txt                读取文件, 批量解码其中的 sn:// URI
+  py main.py d "sn://..." -o wg.conf  解码并保存为 conf
 """
 
 import base64, zlib, struct, os, sys, re, argparse
@@ -224,19 +224,19 @@ def extract_uris(text: str) -> list:
 # ================================================================
 def build_parser():
     p = argparse.ArgumentParser(
-        prog="py 1.py",
+        prog="py main.py",
         description="sn://wg WireGuard URI 编解码工具",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""示例:
-  py 1.py                          显示帮助
-  py 1.py e wg.conf                编码 wg.conf → 输出 URI
-  py 1.py e a.conf b.conf          批量编码多个 conf
-  py 1.py e wg.conf -o uri.txt     编码并保存到文件
-  py 1.py e wg.conf -v             编码 (详细日志)
-  py 1.py d "sn://wg?eNpj..."      解码 URI 字符串
-  py 1.py d nodes.txt              从文件批量解码 sn:// URI
-  py 1.py d "sn://..." -o wg.conf  解码并保存为 conf 文件
-  py 1.py de uri.txt -o wg.conf -v 解码 (详细日志 + 保存)
+  py main.py                          显示帮助
+  py main.py e wg.conf                编码 wg.conf → 输出 URI
+  py main.py e a.conf b.conf          批量编码多个 conf
+  py main.py e wg.conf -o uri.txt     编码并保存到文件
+  py main.py e wg.conf -v             编码 (详细日志)
+  py main.py d "sn://wg?eNpj..."      解码 URI 字符串
+  py main.py d nodes.txt              从文件批量解码 sn:// URI
+  py main.py d "sn://..." -o wg.conf  解码并保存为 conf 文件
+  py main.py de uri.txt -o wg.conf -v 解码 (详细日志 + 保存)
 """,
         add_help=False,
     )
@@ -282,7 +282,7 @@ def main():
     if act in ("e", "en", "encode"):
         if not args.targets:
             print("错误: 请指定要编码的 wg.conf 文件\n")
-            print("用法: py 1.py e wg.conf [wg2.conf ...] [-o output]")
+            print("用法: py main.py e wg.conf [wg2.conf ...] [-o output]")
             sys.exit(1)
 
         results = []
@@ -312,7 +312,7 @@ def main():
     elif act in ("d", "de", "decode"):
         if not args.targets:
             print("错误: 请指定要解码的 URI 或文件\n")
-            print("用法: py 1.py d <URI或文件> [-o output]")
+            print("用法: py main.py d <URI或文件> [-o output]")
             sys.exit(1)
 
         results = []
